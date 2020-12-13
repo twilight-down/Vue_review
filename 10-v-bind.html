@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='app'>
+        <h2>{{message}}</h2>
+        <img src="imgURL" alt="链接" title="bg1">
+        <img src="{{imgURL}}" alt="mustache" title="bg1">
+        <img v-bind:src="imgURL" alt="asa" title="bg1">
+        <!-- v-bind 缩写 : -->
+        <a :href="aHref" target="_blank">百度一下</a>
+    </div>
+
+    <script src='./vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Template',
+                imgURL: './01.jpg',
+                aHref: "http://www.baidu.com"
+            },
+            methods: {
+
+            },
+        })
+    </script>
+
+</body>
+
+</html>

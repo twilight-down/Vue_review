@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: aqua;
+        }
+        
+        .line {
+            color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <h2 class="active">{{message}}</h2>
+        <h2 :class="line">{{message}}</h2>
+        <h2>---------------</h2>
+        <!-- v-bind:class="{类名1:Boolean ,类名2:Boolean}" -->
+        <h2 :class="{active:isActive,line:!isLine}">{{message}}</h2>
+        <h2 :class="{line:isLine,active:!isActive}">{{message}}</h2>
+        <button @click="changed">切换颜色</button>
+        <h2>methods或compute绑定</h2>
+        <h2 :class="getClassName()">{{message}}</h2>
+    </div>
+
+    <script src='./vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Template',
+                active: "active",
+                line: "line",
+                isActive: true,
+                isLine: true
+            },
+            methods: {
+                changed() {
+                    this.isActive = !this.isActive;
+                    this.isLine = !this.isLine
+                },
+                getClassName() {
+                    return {
+                        line: this.isLine,
+                        active: !this.isActive
+                    }
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='app'>
+        <!-- 用数组的方式为其绑定类名 -->
+        <h2 :class="['active','line']">{{message}}</h2>
+        <h2 :class="[active,line]">{{message}}</h2>
+        <h2 :class="getClassName()">{{message}}</h2>
+    </div>
+
+    <script src='./vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Template',
+                active: "active",
+                line: "line"
+            },
+            methods: {
+                getClassName() {
+                    return [this.active, this.line]
+                }
+
+            },
+        })
+    </script>
+
+</body>
+
+</html>
