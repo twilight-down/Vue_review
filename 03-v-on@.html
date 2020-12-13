@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{count}}</div>
+        <button @click="up">+</button>
+        <button @click="down">-</button>
+        <button v-on:click="log">你想说什么？</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                count: 0
+            },
+            methods: {
+                up() {
+                    this.count += 3
+                },
+                down() {
+                    this.count--
+                },
+                log() {
+                    console.log("今天的云和你");
+                    alert("今天的云和你")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

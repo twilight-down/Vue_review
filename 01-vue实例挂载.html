@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 复习</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <div>{{message}}</div>
+        <h1>{{say}}</h1>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello Vue",
+                say: "今天的云和你"
+            }
+        })
+    </script>
+</body>
+
+</html>
