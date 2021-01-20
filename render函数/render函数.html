@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Render函数1</title>
+</head>
+
+<body>
+    <div id='app'>
+        <message :level="2">
+            <a href="#">今天的云和你</a> Twilight
+            <div>这是第三个子节点</div>
+        </message>
+    </div>
+
+    <script src='../vue.js'></script>
+    <script>
+        Vue.component('message', {
+            render: function(createElement) {
+                return createElement(
+                    'h' + this.level, //tag name 标签的名称
+                    {
+                        on: {
+                            click: this.handelClick
+                        }
+                    },
+                    // '哈哈哈哈',
+                    this.$slots.default
+                )
+            },
+            props: {
+                level: {
+                    type: Number,
+                    required: true
+                }
+            },
+            methods: {
+                handelClick() {
+                    console.log(this.$slots);
+                }
+            }
+        })
+        const app = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>

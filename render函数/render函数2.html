@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Render函数2</title>
+</head>
+<style>
+    .renderClass {
+        display: flex;
+    }
+</style>
+
+<body>
+    <!-- <div>
+        niering
+        <div>
+            ssss
+        </div>
+    </div> -->
+    <div id='app'>
+        <message>
+            Down
+        </message>
+    </div>
+
+    <script src='../vue.js'></script>
+    <script>
+        Vue.component('message', {
+            render(h) {
+                let childs = [h('a', {
+                    on: {
+                        click: () => {
+                            alert('1、这是一个子节点但是这个子节点的长度会很长很长的，而且长到无法想象，长到离谱')
+                        }
+                    }
+                }, '2、子节点二 '), h('span', '3、子节点三')]
+                let childNodes = [h('div', {
+                    style: {
+                        overflow: 'hidden',
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis'
+                    }
+                }, '1、这是一个子节点但是这个子节点的长度会很长很长的，而且长到无法想象，长到离谱 '), h('span', childs)]
+
+                return h(
+                    'div', {
+                        on: {
+                            click: () => {
+                                console.log('点击事件被触发');
+                            }
+                        },
+                        style: {
+                            color: 'black',
+                            width: '400px',
+                            height: '100px',
+                            paddiing: '10px',
+                        },
+                        attrs: {
+                            id: 'renderId',
+                            class: 'renderClass'
+                        },
+                        // domProps: {
+                        //     innerHTML: 'sssssss'
+                        // }
+                    },
+                    // 'ssss'
+                    childNodes
+                )
+            }
+        })
+        const app = new Vue({
+            el: '#app',
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Render函数3</title>
+</head>
+<style>
+    #foo {
+        color: black;
+        margin-left: 100px;
+    }
+</style>
+
+<body>
+    <div id='app'>
+        <message :level="1">
+            Twilight-Down
+        </message>
+    </div>
+
+    <script src='../vue.js'></script>
+    <script>
+        Vue.component('message', {
+            render: function(createElement) {
+                return createElement(
+                    'h' + this.level, {
+                        on: {
+                            click: this.messageClick
+                        },
+                        style: {
+                            color: 'blue'
+                        }
+                    },
+                    this.$slots.default
+                )
+            },
+            props: {
+                level: {
+                    type: Number,
+                    required: true
+                }
+            },
+            methods: {
+                messageClick() {
+                    console.log('messageClick');
+                }
+            }
+        })
+        const app = new Vue({
+            el: '#app',
+            // render(createElement) {
+            //     return createElement('h1', {
+            //             // style 直接绑定在这个元素上面的颜色
+            //             style: {
+            //                 color: 'skyblue'
+            //             },
+            //             // 修改元素内部内容 DOM property
+            //             domProps: {
+            //                 innerHTML: 'Twilight'
+            //             },
+            //             // // 组件 prop
+            //             // props: {
+            //             //     myProp: 'prop'
+            //             // },
+            //             // 事件监听
+            //             on: {
+            //                 click: this.handelClick
+            //             },
+            //             // 如果创建的不是单个元素而是一个组件那么这个就会生效
+            //             nativeOn: {
+            //                 click: this.natClick
+            //             },
+            //             attrs: {
+            //                 id: 'foo'
+            //             },
+            //         },
+            //         // 最后一个参数 ，子虚拟节点 
+            //         '今天的云和你')
+            // },
+            methods: {
+                handelClick() {
+                    console.log('render函数渲染出来的元素被点击了');
+                },
+                natClick() {
+                    console.log('render函数中的组件上定义的点击事件被点击了');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
